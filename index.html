@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Полинам Вход Запрещен</title>
 
-  <!-- Прикольный шрифт -->
+  <!-- Шрифт -->
   <link href="https://fonts.googleapis.com/css2?family=Rubik+Burned&display=swap" rel="stylesheet">
 
   <style>
@@ -31,7 +31,7 @@
       margin-top: 30px;
       transition: transform 0.3s ease, background-color 0.3s ease;
       font-family: 'Rubik Burned', cursive;
-      animation: fadeIn 1s ease;
+      animation: fadeIn 0.5s ease;
     }
 
     button:hover {
@@ -43,9 +43,7 @@
       margin-top: 40px;
       font-size: 26px;
       color: red;
-      opacity: 0;
-      animation: fadeIn 1s ease forwards;
-      animation-delay: 0.5s;
+      display: none;
     }
 
     #cover {
@@ -77,6 +75,46 @@
 <body>
 
   <button id="mainButton">хочешь нажать?</button>
-  <div id="message"></div>
+  <div id="message">ПОЛИНАМ ВХОД ЗАПРЕЩЕН</div>
 
-  <img id="cover" src="https://images.genius.com/3b5c13fc144e7fdd2db
+  <img id="cover" src="https://images.genius.com/3b5c13fc144e7fdd2db4e02192df6c15.1000x1000x1.png" width="300" alt="Обложка">
+
+  <iframe
+    id="sc-player"
+    height="166"
+    scrolling="no"
+    frameborder="no"
+    allow="autoplay"
+    src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/lildrughill-842302188/lalala-feat-9mice&color=%23ff69b4&auto_play=true&show_artwork=true">
+  </iframe>
+
+  <script>
+    const button = document.getElementById('mainButton');
+    const message = document.getElementById('message');
+    const cover = document.getElementById('cover');
+    const scPlayer = document.getElementById('sc-player');
+
+    let step = 0;
+
+    button.addEventListener('click', () => {
+      step++;
+
+      if (step === 1) {
+        button.textContent = 'точно?';
+      } else if (step === 2) {
+        button.textContent = 'ты уверен/а?';
+      } else if (step === 3) {
+        message.style.display = 'block';
+        button.textContent = 'ну ты ready?';
+      } else if (step === 4) {
+        document.body.style.backgroundColor = '#ff69b4';
+        cover.style.display = 'block';
+        scPlayer.style.display = 'block';
+        button.style.display = 'none';
+        message.style.display = 'none';
+      }
+    });
+  </script>
+
+</body>
+</html>
